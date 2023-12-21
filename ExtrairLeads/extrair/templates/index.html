@@ -1,0 +1,30 @@
+<!-- lead_generator/templates/lead_generator/index.html -->
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <h2 class="mt-4 mb-4">Página Inicial</h2>
+    <form method="post" action="{% url 'criar_lead' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="text" name="telefone" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <select name="status" class="form-control" required>
+                <option value="Topo de Funil">Topo de Funil</option>
+                <option value="Meio de Funil">Meio de Funil</option>
+                <option value="Fundo de Funil">Fundo de Funil</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar Lead</button>
+    </form>
+{% endblock %}
